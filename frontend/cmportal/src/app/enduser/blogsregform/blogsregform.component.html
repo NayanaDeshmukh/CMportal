@@ -1,0 +1,91 @@
+<!-- <app-user-header></app-user-header> -->
+<div class="container mt-2">
+    <div class="row justify-content-center">
+        <h6 class="form-title text-center">User Registration Form</h6>
+        <div class=" col-md-6 mt-3">
+            <div class="card-body border border-primary">
+                <form [formGroup]="userform">
+                    <div class="form-group">
+                        <label>First Name</label><span class="text-danger">*</span>
+                        <input class="form-control" type="text" formControlName="fname">
+                    </div>
+                    <div *ngIf="ul['fname'].invalid && (ul['fname'].dirty || ul['fname'].touched)" class="text-danger">
+                        <div *ngIf="ul['fname'].errors?.['required']">
+                            Name **
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Last Name</label><span class="text-danger">*</span>
+                        <input class="form-control" type="text" formControlName="lname">
+                    </div>
+                    <div *ngIf="ul['lname'].invalid && (ul['lname'].dirty || ul['lname'].touched)" class="text-danger">
+                        <div *ngIf="ul['lname'].errors?.['required']">
+                            Name **
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Gender</label><span class="text-danger">*</span><br>
+                        <div class="row">
+                            <div class="col-md-6"> <input type="radio" value="male" formControlName="gender"> Male </div>
+                            <div class="col-md-6"> <input type="radio" value="female" formControlName="gender"> Female </div>
+                        </div>
+                    </div>
+                    <div *ngIf="ul['gender'].invalid && (ul['gender'].dirty || ul['gender'].touched)"
+                        class="text-danger">
+                        <div *ngIf="ul['gender'].errors?.['required']">
+                            select **
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Email</label><span class="text-danger">*</span>
+                        <input class="form-control" type="text" formControlName="email">
+                    </div>
+                    <div *ngIf="ul['email'].invalid && (ul['email'].dirty || ul['email'].touched)" class="text-danger">
+                        <div *ngIf="ul['email'].errors?.['required']">
+                            Enter email.
+                        </div>
+                        <div *ngIf="ul['email'].errors?.['pattern']">
+                            Enter valid email.
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>UserName</label><span class="text-danger">*</span>
+                        <input class="form-control" type="text" formControlName="username">
+                    </div>
+                    <div *ngIf="ul['username'].invalid && (ul['username'].dirty || ul['username'].touched)" class="text-danger">
+                        <div *ngIf="ul['username'].errors?.['required']">
+                            Name **
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Password</label><span class="text-danger">*</span>
+                        <input class="form-control" type="text" formControlName="password">
+                    </div>
+                    <div *ngIf="ul['password'].invalid && (ul['password'].dirty || ul['password'].touched)" class="text-danger">
+                        <div *ngIf="ul['password'].errors?.['required']">
+                            Please enter password credentials **
+                        </div>
+                    </div>
+                   
+
+                    <br>
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit"
+                            [disabled]="userform.pristine || userform.invalid" (click)="sendto()">Sign Up</button>
+                    </div>
+                    <div class="alert alert-warning" *ngIf="ul.submitted && isSignUpFailed">
+                        Signup failed!<br />{{ errorMessage }}
+                      </div>
+                </form>
+                <div class="alert alert-primary" *ngIf="isSuccessful">
+                    Your registration is successful!
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

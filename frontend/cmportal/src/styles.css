@@ -1,0 +1,111 @@
+/* You can add global styles to this file, and also import other style files */
+.entry-title{
+    border-left: 6px solid #81d742;
+    background-color: #0067be;
+    color:white;
+    margin: 0px;
+    padding: 20px;
+    border-radius: 20px 20px 0px 0px;
+    padding-top: 40px;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 1;
+}
+.head{
+
+ font-size: 20px;
+ font-weight: normal;
+
+}
+.blh{
+    border-left: 6px solid blue 
+}
+.blog-title{
+background-image: linear-gradient(45deg,blue 0%,#03c5ff)!important;
+color:white;
+font-weight: 700;
+padding: 10px;
+letter-spacing: 1px;
+text-shadow:1px 1px 1px #333; 
+}
+.h-title{
+    background-image: linear-gradient(45deg,blue 0%,#03c5ff)!important;
+    color:white;
+    width: 90%;
+    border-radius: 15px;
+    font-weight: 700;
+    padding: 10px;
+    letter-spacing: 1px;
+    text-shadow:1px 1px 1px #333; 
+    }
+.logo-title{
+    background-image: linear-gradient(45deg,blue 0%,#03c5ff)!important;
+    border-radius: 50px;
+    width: 150px;
+    text-align: center;
+    color:white;
+    font-weight: 700;
+    font-size: 30px;
+    padding: 20px;
+    letter-spacing: 2px;
+    text-shadow:1px 1px 1px #333; 
+    }
+.blog{
+    background-image: linear-gradient(45deg,rgb(88, 88, 228) 0%,#03c5ff)!important;  
+    border:5px solid #012949;
+    color:white;
+}
+.blog-tl{
+    font-size: 30px;
+    letter-spacing: 1px;
+text-shadow:1px 1px 1px #333;
+}
+.blog1{
+    /* background-image: linear-gradient(45deg,rgb(88, 88, 228) 0%,#03c5ff)!important;   */
+    border:5px solid #62aae4;
+    /* color:white; */
+}
+
+.header-title{
+    color:#0067be;
+    text-shadow:1px 1px 1px #333;  
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+.form-title{
+    color:#0067be;
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.cf{
+    border-bottom: 1px dotted #0067be;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+}
+.emp-title{
+    background-image: linear-gradient(45deg,#0067be 0%,#03c5ff)!important;
+    color:white;
+    font-weight: 1000;
+    font-size: 40px;
+    padding: 10px;
+    letter-spacing: 1px;
+    text-shadow:1px 1px 1px #333; 
+    }
+
+.foot{
+    /* position: absolute; */
+    display: block;
+    bottom:0px;
+    width: 100%;
+}
+.afoot{
+    position: absolute;
+    display: block;
+    bottom:0px;
+    width: 100%;
+}
+.limitTextHeight {
+    height: 65px;
+    overflow: hidden;
+}

@@ -1,0 +1,99 @@
+<div class="container mt-2">
+    <div class="row justify-content-center">
+        <h6 class="form-title text-center"> Employee Profile</h6>
+        <div class=" col-md-6 mt-5">
+            <div class="card-header emp-title text-center p-4">{{c2}} {{c3}}</div>
+            <div class="card-body border border-primary">
+                <div class="text-center fw-bold m-2">{{c1}}</div>
+                <!-- <div class="card-header blog-title text-center">{{c2}} {{c3}}</div> -->
+                <div class="card-body p-3 mt-2 border border-primary">
+                    
+                    <div class="row cf">
+                        <div class="col-sm-4 fw-bold ">
+                            Employee Name
+                        </div>
+                        <div class="col-sm-6">
+                            {{c2}} {{c3}}
+                        </div>
+                    </div>
+
+                    <div class="row cf">
+                        <div class="col-sm-4 fw-bold ">
+                            Company Name
+                        </div>
+                        <div class="col-sm-6">
+                            {{c4}}
+                        </div>
+                    </div>
+
+                    <div class="row cf">
+                        <div class="col-sm-4 fw-bold">
+                            Designation
+                        </div>
+                        <div class="col-sm-6">
+                            {{c5}}
+                        </div>
+                    </div>
+
+                    <div class="row cf">
+                        <div class="col-sm-4 fw-bold">
+                            Gender
+                        </div>
+                        <div class="col-sm-6">
+                            {{c6}}
+                        </div>
+                    </div>
+
+                    <div class="row cf">
+                        <div class="col-sm-4 fw-bold">
+                            Email Address
+                        </div>
+                        <div class="col-sm-6">
+                            {{c7}}
+                        </div>
+                    </div>
+
+                    <div class="row cf">
+                        <div class="col-sm-4 fw-bold">
+                            Address
+                        </div>
+                        <div class="col-sm-6">
+                            {{c8}} ,{{c9}} ,{{c10}} ,{{c11}} ,{{c12}}
+                        </div>
+                    </div>
+
+                    <div class="row cf">
+                        <div class="col-sm-4 fw-bold">
+                            Contact Number
+                        </div>
+                        <div class="col-sm-6">
+                            {{c14}}
+                        </div>
+                    </div>
+
+                    <div class="row cf">
+                        <div class="col-sm-4 fw-bold">
+                            Date Of Birth
+                        </div>
+                        <div class="col-sm-6">
+                            {{c13}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="text-center edit-block p-2">
+                    <span class="edit" [routerLink]="['/editemployee/'+c1]">
+                        <button type="button" class="btn btn-success btn-sm mx-2"><i class="fas fa-edit"></i></button>
+                    </span>
+                    <span class="delete" (click)="removeemp(this.c1)">
+                        <button type="button" class="btn btn-danger btn-sm mx-2"><i class="fas fa-trash"></i></button>
+                    </span>
+                    <span class="close" (click)="closeemp(this.c1)">
+                        <button type="button" class="btn btn-primary btn-sm mx-2">Close</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>

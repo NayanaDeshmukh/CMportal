@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class=" col-md-4 ">
+<div class="card-body border border-primary ">
+    <div class="text-center">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card "
+    />
+</div>
+<br>
+    <form [formGroup]="userlogin"  *ngIf="!isLoggedIn">
+        <div class="form-group">
+            <label for="inputName">UserName</label><span class="text-danger">*</span>
+            <input class="form-control" type="text" formControlName="username">
+        </div>
+        <div *ngIf="myForm['username'].invalid && (myForm['username'].dirty || myForm['username'].touched)" class="text-danger">
+            <div *ngIf="myForm['username'].errors?.['required']">
+                Name **
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="inputEmail3">Password</label><span class="text-danger">*</span>
+            <input class="form-control" type="password" formControlName="password">
+        </div>
+        <!-- error -->
+        <div *ngIf="myForm['password'].invalid && (myForm['password'].dirty || myForm['password'].touched)"
+            class="text-danger">
+            <div *ngIf="myForm['password'].errors?.['required']">
+                Password**
+            </div>
+            <!-- <div *ngIf="myForm['password'].errors?.['pattern']">
+                Enter valid password.
+            </div> -->
+        </div>
+
+        <br>
+
+
+        <div class="form-group text-center">
+            <button class="btn btn-primary btn-lg btn-block" type="submit" 
+                [disabled]="userlogin.pristine || userlogin.invalid" (click)="signin()">Login</button>
+        </div>
+        <br>
+    </form> 
+          <div class="alert alert-primary" *ngIf="isLoggedIn">
+            Logged in as {{ roles }}.
+          </div>
+ 
+   
+</div>
+</div>
+</div>
+</div>

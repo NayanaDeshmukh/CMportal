@@ -1,0 +1,107 @@
+<!-- New -->
+
+<div class="container-fluid mt-2">
+    <div class=" border border-primary"></div>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand logo-title mx-5 ">CPM</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse head" id="collapsibleNavbar">
+                
+                <ul class="navbar-nav ms-auto " routerLinkActive="active">
+                    <li class="nav-item">
+                        <a href="/home" class="nav-link mx-1" routerLink="home">Home </a>
+                    </li>
+                    <li class="nav-item dropdown mx-1" *ngIf="showAdminBoard">
+                        <a class="nav-link dropdown-toggle " href="#" role="button"
+                            data-bs-toggle="dropdown">Company</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="" routerLink="/createcompany">Add new company</a>
+                            </li>
+                            <li><a class="dropdown-item" href="" routerLink="/listcompany">Company list</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown mx-1" *ngIf="showAdminBoard">
+                        <a class="nav-link dropdown-toggle " href="#" role="button"
+                            data-bs-toggle="dropdown">Employees</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="" routerLink="/createemployee">Add new Employee</a>
+                            </li>
+                            <li><a class="dropdown-item" href="" routerLink="/listemployee">Employee list</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" *ngIf="showAdminBoard">
+                        <a class="nav-link mx-1 " routerLink="/listuser">Users</a>
+                    </li>
+                    <li class="nav-item" *ngIf="showAdminBoard">
+                        <a class="nav-link mx-1 " routerLink="/adminblogs">Blogs</a>
+                    </li>
+                    <li class="nav-item" *ngIf="showAdminBoard">
+                        <a class="nav-link mx-1" routerLink="/admincontact">Feedback</a>
+                    </li>
+
+                    <li class="nav-item" *ngIf="showuserBoard  ">
+                        <a href="/blogs" class="nav-link mx-1" routerLink="blogs">Blogs </a>
+                    </li>
+
+                    <li class="nav-item" *ngIf="showuserBoard ">
+                        <a href="/about" class="nav-link mx-1" routerLink="about">AboutUs </a>
+                    </li>
+                    <li class="nav-item" *ngIf="showuserBoard">
+                        <a href="/contact" class="nav-link mx-1" routerLink="contact">contactUs </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto " *ngIf="!isLoggedIn">
+                   
+                        <li class="nav-item" >
+                            <a href="/blogs" class="nav-link mx-1" routerLink="blogs">Blogs </a>
+                        </li>
+    
+                        <li class="nav-item" >
+                            <a href="/about" class="nav-link mx-1" routerLink="about">AboutUs </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/contact" class="nav-link mx-1" routerLink="contact">contactUs </a>
+                        </li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto " *ngIf="!isLoggedIn">
+                        <li>
+                        <a href="/blogsregform" class="nav-link mx-1" routerLink="/blogsregform">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/userlogin" class="nav-link mx-1" routerLink="userlogin">Login</a>
+                    </li>
+                    
+                </ul>
+
+                <ul class="navbar-nav ms-auto header-title   " *ngIf="showAdminBoard">
+                    <a href="#" class="navbar-brand text-primary ">ADMIN PORTAL</a>
+                </ul>
+                <ul class="navbar-nav ms-auto header-title  " *ngIf="showuserBoard">
+                    <a href="#" class="navbar-brand text-primary">USER PORTAL</a>
+                </ul>
+                
+                <ul class="navbar-nav ml-auto  " *ngIf="isLoggedIn">
+                    <li class="nav-item ">
+                        <a href="/profile" class="nav-link mx-1" routerLink="profile"><i class="fas fa-user"></i>{{
+                            username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href class="nav-link mx-1" (click)="logout()">LogOut</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class=" border border-primary"></div>
+
+
+
+
+<router-outlet></router-outlet>

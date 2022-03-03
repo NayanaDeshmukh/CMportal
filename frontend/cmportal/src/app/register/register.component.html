@@ -1,0 +1,59 @@
+<app-user-header></app-user-header>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class=" col-md-6 ">
+            <div class="card-body">
+                <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+                <form [formGroup]="regform">
+                    <div class="form-group">
+                        <label>UserName</label><span class="text-danger">*</span>
+                        <input class="form-control" type="text" formControlName="username">
+                    </div>
+                    <div *ngIf="rg['username'].invalid && (rg['username'].dirty || rg['username'].touched)" class="text-danger">
+                        <div *ngIf="rg['username'].errors?.['required']">
+                            Name **
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Email</label><span class="text-danger">*</span>
+                        <input class="form-control" type="text" formControlName="email">
+                    </div>
+                    <div *ngIf="rg['email'].invalid && (rg['email'].dirty || rg['email'].touched)" class="text-danger">
+                        <div *ngIf="rg['email'].errors?.['required']">
+                            Enter email.
+                        </div>
+                        <div *ngIf="rg['email'].errors?.['pattern']">
+                            Enter valid email.
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label>Password</label><span class="text-danger">*</span>
+                        <input class="form-control" type="text" formControlName="password">
+                    </div>
+                    <div *ngIf="rg['password'].invalid && (rg['password'].dirty || rg['password'].touched)"
+                        class="text-danger">
+                        <div *ngIf="rg['password'].errors?.['required']">
+                            Please enter password credentials **
+                        </div>
+                    </div>
+
+
+                    <br>
+                    <div class="form-group">
+                        <button class="btn btn-success btn-lg btn-block" type="submit"
+                            [disabled]="regform.pristine || regform.invalid" (click)="onSubmit()">Sign Up</button>
+                    </div>
+                    <div class="alert alert-warning" *ngIf="rg.submitted && isSignUpFailed">
+                        Signup failed!<br />{{ errorMessage }}
+                      </div>
+                </form>
+                <div class="alert alert-success" *ngIf="isSuccessful">
+                    Your registration is successful!
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

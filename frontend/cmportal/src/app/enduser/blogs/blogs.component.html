@@ -1,0 +1,73 @@
+<!-- <app-user-header></app-user-header> -->
+<div class="container mt-5">
+    <div>
+        <h1 class="entry-title" itemprop="headline">Blog</h1>
+    </div>
+    <br>
+    <div *ngIf="isuser">
+        <button class="btn btn-primary btn-lg btn-block ms-auto" routerLink="/blogswrite">Write a New blog</button>
+        <!-- <button class="btn btn-success btn-lg btn-block" routerLink="/">My Blogs</button> -->
+
+    </div>
+    <div *ngIf="!isuser">
+        <button class="btn btn-primary btn-lg btn-block ms-auto " routerLink="/blogsregform">SignUp / Login to Write a
+            blog</button>
+    </div>
+
+ <div class="text-end">
+     <input type="text" placeholder="Search.."  [(ngModel)]="location" >
+    <button  class="btn btn-primary btn-sm btn-block ms-auto" type="submit" (click)="search(location)"><i class="fa fa-search"></i></button>
+</div>
+    
+    <div class="container">
+        <!-- No data message -->
+        <p *ngIf="blog.length <= 0" class="no-data text-center">There are no blogs!</p>
+      
+
+
+        <div class="container mt-2">
+            <div class="row justify-content-center" *ngIf="blog.length > 0">
+
+                <div class=" col-md-10 mt-5 blog " *ngFor="let bl of blog; let i = index">
+                    <div class="card-header blog-tl p-3">{{bl.title}}</div>
+                    <div class="card-body ">
+              
+                            <div class="row ">
+                                <div class="col-sm-5">
+                                     <i><u>by {{bl.wby}}</u> </i></div>
+                                    <div class="col-sm-6 text-secondary text-end">  <li>  {{bl.date}}</li>
+                                </div>
+                            </div>
+                        <div class="row ">
+                            <div [ngClass]="{'limitTextHeight': isReadMore}">
+                                <div class="col-sm-10 mt-3">
+                                    {{bl.description}}
+                                </div>
+                            </div>
+                            <p (click)="showText()" class="text-dark text-end">
+                                {{ isReadMore ? '..Read More': '..Read Less' }}
+                            </p>
+                        </div>
+                        
+
+                    
+
+                        <div class="text-end edit-block " *ngIf="isuser">
+                            <span class="edit" [routerLink]="['/editblog', bl._id]">
+                                <button type="button" class="btn btn-success btn-sm"><i
+                                        class="fas fa-edit"></i></button>
+                            </span>
+                            <span class="delete" (click)="removeblog(bl, i)">
+                                <button type="button" class="btn btn-danger btn-sm mx-3 "><i
+                                        class="fas fa-trash"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<br>
+<app-user-footer></app-user-footer>

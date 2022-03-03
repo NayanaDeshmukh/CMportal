@@ -1,0 +1,12 @@
+.entry-title{
+    border-left: 6px solid #81d742;
+    background-color: #0067be;
+    color:white;
+    margin: 0px;
+    padding: 20px;
+    border-radius: 20px 20px 0px 0px;
+    padding-top: 40px;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 1;
+}

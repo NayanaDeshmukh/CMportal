@@ -1,0 +1,53 @@
+<div class="container m-5" *ngIf="currentUser; else loggedOut">
+  
+</div>
+  
+
+  <div class="container mt-2">
+    <div class="row justify-content-center">
+        <h6 class="form-title text-center">User Profile</h6>
+        <div class=" col-md-6 mt-5">
+            <div class="card-header emp-title text-center p-4">{{ currentUser.username }}</div>
+            <div class="card-body border border-primary">
+                
+                <div class="card-body p-3 mt-2 border border-primary">
+                   
+                    <div class="row cf">
+                        <div class="col-sm-4 fw-bold ">
+                            Token
+                        </div>
+                        <div class="col-sm-6">
+                          {{ currentUser.accessToken.substring(0, 20) }} ...
+                          {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
+                        </div>
+                    </div>
+                   
+                    <div class="row cf">
+                        <div class="col-sm-4 fw-bold ">
+                            Email
+                        </div>
+                        <div class="col-sm-6">
+                          {{ currentUser.email }}
+                        </div>
+                    </div>
+
+                    <div class="row cf">
+                      <div class="col-sm-4 fw-bold ">
+                          Roles
+                      </div>
+                      <div class="col-sm-6" *ngFor="let role of currentUser.roles">
+                        {{ role}}
+                      </div>
+                  </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
+<br><br>
+
+ 
+

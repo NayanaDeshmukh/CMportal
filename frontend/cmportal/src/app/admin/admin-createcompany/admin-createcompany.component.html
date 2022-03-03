@@ -1,0 +1,163 @@
+<!-- <app-admin-header></app-admin-header> -->
+<div class="container" *ngIf="!isAdmin">
+    You are not authorize to access this page.
+  </div>
+<div class="container mt-3" *ngIf="isAdmin">
+    <div class="row justify-content-center">
+        <div class="col-md-2"> </div>
+        <div class="col-md-8">
+            <h2 class="form-title">Company Registration Form</h2>
+            <p>Register your business by using this form. Required fields are marked with an asterisk(*).</p>
+            <hr>
+            <div class="card-body border border-primary">
+                <form [formGroup]="companyform">
+                    <div class="row ">
+                        <div class="col-md-6 form-group">
+                            <label>Company Name </label><span class="text-danger">*</span><br>
+                            <input class="form-control" type="text" formControlName="name">
+                            <div *ngIf="cf['name'].invalid && (cf['name'].dirty || cf['name'].touched)"
+                                class="text-danger">
+                                <div *ngIf="cf['name'].errors?.['required']">
+                                    Company Name is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label> Owner </label><span class="text-danger">*</span><br>
+                            <input class="form-control" type="text" formControlName="owner">
+                            <div *ngIf="cf['owner'].invalid && (cf['owner'].dirty || cf['owner'].touched)"
+                                class="text-danger">
+                                <div *ngIf="cf['owner'].errors?.['required']">
+                                    Company Owner Name is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class=" form-group">
+                        <label> Company mailing address </label><span class="text-danger">*</span><br>
+                        <input type="text" class="form-control" placeholder="Street Address" formControlName="addr">
+                        <div *ngIf="cf['addr'].invalid && (cf['addr'].dirty || cf['addr'].touched)" class="text-danger">
+                            <div *ngIf="cf['addr'].errors?.['required']">
+                                Must fill deatil address
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input class="form-control" type="text" placeholder="City" formControlName="city">
+                            <div *ngIf="cf['city'].invalid && (cf['city'].dirty || cf['city'].touched)"
+                                class="text-danger">
+                                <div *ngIf="cf['city'].errors?.['required']">
+                                    Enter city
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <input class="form-control" type="text" placeholder="State" formControlName="state">
+                            <div *ngIf="cf['state'].invalid && (cf['state'].dirty || cf['state'].touched)"
+                                class="text-danger">
+                                <div *ngIf="cf['state'].errors?.['required']">
+                                    Enter state
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input class="form-control" type="text" placeholder="Zip Code" formControlName="zip">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <select class="custom-select form-control" (change)="countryname($event)" placeholder="Country" formControlName="country">
+                                <option value=""> Choose Country...</option>
+                                <option *ngFor="let ct of Countries" value="{{ct}}">
+                                    {{ct}}
+                                </option>
+                            </select>
+                                <div *ngIf="cf['country'].invalid && (cf['country'].dirty || cf['country'].touched)"
+                                class="text-danger">
+                                <div *ngIf="cf['country'].errors?.['required']">
+                                    Enter country
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Email </label><span class="text-danger">*</span><br>
+                            <input class="form-control" type="email" formControlName="email">
+                            <div *ngIf="cf['email'].invalid && (cf['email'].dirty || cf['email'].touched)"
+                                class="text-danger">
+                                <div *ngIf="cf['email'].errors?.['required']">
+                                    Enter email.
+                                </div>
+                                <div *ngIf="cf['email'].errors?.['pattern']">
+                                    Enter valid email.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label> Phone number </label><span class="text-danger">*</span><br>
+                            <input class="form-control" type="tel" formControlName="phone">
+                            <div *ngIf="cf['phone'].invalid && (cf['phone'].dirty || cf['phone'].touched)"
+                                class="text-danger">
+                                <div *ngIf="cf['phone'].errors?.['required']">
+                                    Enter your phone number.
+                                </div>
+                                <div *ngIf="cf['phone'].errors?.['pattern']">
+                                    Enter Numbers Only
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Nominal capital </label><br>
+                            <input class="form-control" type="text" formControlName="capital">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label> Industry </label><span class="text-danger">*</span><br>
+                            <select class="custom-select form-control" (change)="industryname($event)"
+                                formControlName="industry">
+                                <option value="">Choose...</option>
+                                <option *ngFor="let ind of Industrydata" value="{{ind}}">
+                                    {{ind}}
+                                </option>
+                            </select>
+                            <div *ngIf="cf['industry'].invalid && (cf['industry'].dirty || cf['industry'].touched)"
+                                class="text-danger">
+                                <div *ngIf="cf['industry'].errors?.['required']">
+                                    Enter Industry
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>website </label><br>
+                            <input class="form-control" type="email" formControlName="web">
+                        </div>
+                    </div>
+                    <br>
+                    <div class=" form-group">
+                        <label> Company description </label><br>
+                        <textarea class="form-control"  rows="4" cols="50" formControlName="desc"></textarea>
+                    </div>
+                    <br>
+                    <div class=" form-group text-center">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="onSubmit()"
+                            [disabled]="companyform.pristine || companyform.invalid">REGISTER COMPANY</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-2"> </div>
+    </div>
+</div>
+<br><br>
+<app-admin-footer></app-admin-footer>

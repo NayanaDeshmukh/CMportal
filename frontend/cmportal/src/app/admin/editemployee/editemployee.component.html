@@ -1,0 +1,183 @@
+<!-- <app-admin-header></app-admin-header> -->
+<div class="container" *ngIf="!isAdmin">
+    You are not authorize to access this page.
+  </div>
+<div class="container mt-3" *ngIf="isAdmin">
+    <div class="row justify-content-center">
+        <div class="col-md-2"> </div>
+        <div class="col-md-8">
+            <h2 class="form-title">Update Employee Registration Form</h2>
+            <p>Please fill in the information requested below in order to complete the employee registration.<br>
+            Thank you !!</p>
+            <hr>
+            <div class="card-body border border-primary">
+                <form [formGroup]="employeeform">
+                    <div class="row ">
+                        <label>Employee Name<span class="text-danger">*</span> </label><br>
+                        <div class="col-md-6 form-group">
+                            <input class="form-control" type="text" formControlName="fname" placeholder="First">
+                            <div *ngIf="ef['fname'].invalid && (ef['fname'].dirty || ef['fname'].touched)"
+                                class="text-danger">
+                                <div *ngIf="ef['fname'].errors?.['required']">
+                                    Name is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <input class="form-control" type="text" formControlName="lname" placeholder="Last">
+                            <div *ngIf="ef['lname'].invalid && (ef['lname'].dirty || ef['lname'].touched)"
+                                class="text-danger">
+                                <div *ngIf="ef['lname'].errors?.['required']">
+                                    Name is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                          <label>Gender</label><span class="text-danger">*</span><br>
+                                <div class="row">
+                                    <div class="col-md-6"> <input type="radio" value="male" formControlName="gender"> Male </div>
+                                    <div class="col-md-6"> <input type="radio" value="female" formControlName="gender"> Female </div>
+                                </div>
+                            </div>
+                            <div *ngIf="ef['gender'].invalid && (ef['gender'].dirty || ef['gender'].touched)"
+                                class="text-danger">
+                                <div *ngIf="ef['gender'].errors?.['required']">
+                                    select **
+                                </div>
+                            </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label> Company Name </label><span class="text-danger">*</span><br>
+                            <select class="custom-select form-control" 
+                                formControlName="company">
+                                <option value="">Choose company</option>
+                                <option *ngFor="let comp of company" value="{{comp.name}}">
+                                    {{comp.name}}
+                                </option>
+                            </select>
+                            <div *ngIf="ef['company'].invalid && (ef['company'].dirty || ef['company'].touched)"
+                                class="text-danger">
+                                <div *ngIf="ef['company'].errors?.['required']">
+                                    Enter company
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label> Designation </label><span class="text-danger">*</span><br>
+                            <input class="form-control" type="text"  formControlName="designation">
+                            <div *ngIf="ef['designation'].invalid && (ef['designation'].dirty || ef['designation'].touched)"
+                                class="text-danger">
+                                <div *ngIf="ef['designation'].errors?.['required']">
+                                    Enter Designation
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label> Marital Status </label><span class="text-danger">*</span><br>
+                            <select class="custom-select form-control" (change)="maritalstatus($event)"
+                                formControlName="status">
+                                <option value="">Choose...</option>
+                                <option *ngFor="let stat of statusdata" value="{{stat}}">
+                                    {{stat}}
+                                </option>
+                            </select>
+                            <div *ngIf="ef['status'].invalid && (ef['status'].dirty || ef['status'].touched)"
+                                class="text-danger">
+                                <div *ngIf="ef['status'].errors?.['required']">
+                                    Enter status
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Date of Birth</label><span class="text-danger">*</span><br>
+                            <input class="form-control" type="date"  formControlName="dob">
+                            <div *ngIf="ef['dob'].invalid && (ef['dob'].dirty || ef['dob'].touched)"
+                                class="text-danger">
+                                <div *ngIf="ef['dob'].errors?.['required']">
+                                    Enter DOB
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Email </label><span class="text-danger">*</span><br>
+                            <input class="form-control" type="email" formControlName="email">
+                            <div *ngIf="ef['email'].invalid && (ef['email'].dirty || ef['email'].touched)"
+                                class="text-danger">
+                                <div *ngIf="ef['email'].errors?.['required']">
+                                    Enter email.
+                                </div>
+                                <div *ngIf="ef['email'].errors?.['pattern']">
+                                    Enter valid email.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label> Phone number </label><span class="text-danger">*</span><br>
+                            <input class="form-control" type="tel" formControlName="phone">
+                            <div *ngIf="ef['phone'].invalid && (ef['phone'].dirty || ef['phone'].touched)"
+                                class="text-danger">
+                                <div *ngIf="ef['phone'].errors?.['required']">
+                                    Enter your phone number.
+                                </div>
+                                <div *ngIf="ef['phone'].errors?.['pattern']">
+                                    Enter Numbers Only
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class=" form-group">
+                        <label> Home Address </label><br>
+                        <input type="text" class="form-control" placeholder="Street Address" formControlName="addr">
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input class="form-control" type="text" placeholder="City" formControlName="city">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <input class="form-control" type="text" placeholder="State" formControlName="state">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input class="form-control" type="text" placeholder="Zip Code" formControlName="zip">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <select class="custom-select form-control" (change)="countryname($event)"  formControlName="country">
+                                <option value=""> Choose Country...</option>
+                                <option *ngFor="let ct of Countries" value="{{ct}}">
+                                    {{ct}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                   
+                    <div class=" form-group text-center">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="onSubmit()"
+                        [disabled]="employeeform.pristine || employeeform.invalid"  >UPDATE</button>
+                        <button class="btn btn-primary btn-lg btn-block mx-3" type="submit" routerLink="/listemployee">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-2"> </div>
+    </div>
+</div>
+<app-admin-footer></app-admin-footer>
+
+
+

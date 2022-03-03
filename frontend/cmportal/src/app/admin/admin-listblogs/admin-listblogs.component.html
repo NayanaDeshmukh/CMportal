@@ -1,0 +1,46 @@
+<!-- <app-admin-header></app-admin-header> -->
+<div class="container" *ngIf="!isAdmin">
+    You are not authorize to access this page.
+</div>
+<div class="container mt-3" *ngIf="isAdmin">
+    <!-- No data message -->
+    <p *ngIf="blog.length <= 0" class="no-data text-center">There are no blogs!</p>
+
+    <h6 class="form-title text-center">User blogs</h6>
+    
+    <div class="container mt-2">
+        <div class="row justify-content-center" *ngIf="blog.length > 0">
+
+            <div class=" col-md-10 mt-5 blog " *ngFor="let bl of blog; let i = index">
+                <div class="card-header blog-tl p-3">{{bl.title}}</div>
+                <div class="card-body ">
+          
+                        <div class="row ">
+                            <div class="col-sm-5">
+                                 <i><u>by {{bl.wby}}</u> </i></div>
+                                <div class="col-sm-6 text-secondary text-end">  <li>  {{bl.date}}</li>
+                            </div>
+                        </div>
+                    <div class="row ">
+                        <div [ngClass]="{'limitTextHeight': isReadMore}">
+                            <div class="col-sm-10 mt-3">
+                                {{bl.description}}
+                            </div>
+                        </div>
+                        <p (click)="showText()" class="text-dark text-end">
+                            {{ isReadMore ? '..Read More': '..Read Less' }}
+                        </p>
+                    </div>
+
+                        <div class="text-end edit-block p-2" >
+                            <span class="delete" (click)="removeblog(bl, i)">
+                                <button type="button" class="btn btn-danger btn-sm "><i class="fas fa-trash"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<br>
+<app-admin-footer></app-admin-footer>
